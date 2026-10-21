@@ -207,6 +207,7 @@ func TestErrors(t *testing.T) {
 			if err != nil {
 				return
 			}
+			_, _ = io.ReadFull(conn, make([]byte, cookieSize))
 			_, _ = conn.Write([]byte("HTTP/1.1 400 Bad Request\r\n\r\n"))
 			_ = conn.Close()
 		}
